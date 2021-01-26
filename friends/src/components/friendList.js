@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react'
 import { connect } from 'react-redux';
-import { getFriends } from '../utils/reducers/actions/friendsActions'
+import { getFriends } from '../utils/reducers/actions/friendsActions';
+import AddFriend from './addFriend'
 
 function FriendList (props){
     useEffect(()=>{
@@ -16,6 +17,7 @@ function FriendList (props){
                     </div>
                 )
             })}
+            <AddFriend/>
         </div>
     )
 }

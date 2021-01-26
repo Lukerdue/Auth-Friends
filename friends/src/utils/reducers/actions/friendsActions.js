@@ -20,10 +20,23 @@ export const getFriends=()=>dispatch=>{
     dispatch({ type: "API_START"});
     axiosWithAuth().get(`${baseUrl}/api/friends`)
     .then(res=>{
+        dispatch({ type: "API_GOOD"})
         dispatch({ type: "SET_FRIENDS", payload: res.data})
     })
     .catch(drama=>{
         dispatch({ type:"API_BAD", payload: drama})
     })
     
+}
+
+export const addFriend=(friend)=>dispatch=>{
+    dispatch({ type: "API_START"});
+    axiosWithAuth().post(`${baseUrl}/api/friends`, friend)
+    .then(res=>{
+        dispatch({ type: "API_GOOD"})
+        dispatch({ type: "SET_FRIENDS", payload: res.data})
+    })
+    .catch(drama=>{
+        dispatch({ type: "API_BAD", payload: drama})
+    })
 }

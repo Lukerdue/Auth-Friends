@@ -5,9 +5,8 @@ import FriendList from './components/friendList'
 import { connect } from 'react-redux'
 
 function App(props) {
-  console.log(props)
   return (
-    <div className="App">
+    <div className={`App ${props.isLoading ? "loading" : ""}`}>
       <p>{props.error}</p>
       <Switch>
         <Route exact path="/">
@@ -22,7 +21,8 @@ function App(props) {
 }
 function mapStateToProps(state){
   return{
-    error: state.error
+    error: state.error,
+    isLoading: state.isLoading
   }
 }
 
